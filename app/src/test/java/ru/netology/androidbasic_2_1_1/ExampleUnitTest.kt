@@ -1,4 +1,4 @@
-package ru.netology.androidbasic_1_2_1
+package ru.netology.androidbasic_2_1_1
 
 import org.junit.Test
 

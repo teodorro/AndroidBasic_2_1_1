@@ -115,7 +115,6 @@
         android:padding="@dimen/common_spacing"
         app:layout_constraintStart_toEndOf="@+id/textViewLikes"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        app:srcCompat="@drawable/ic_share_external_outline_28"
         tools:srcCompat="@drawable/ic_share_external_24" />
 
     <TextView
@@ -136,7 +135,6 @@
         android:padding="@dimen/common_spacing"
         app:layout_constraintEnd_toStartOf="@+id/textViewViews"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        app:srcCompat="@drawable/ic_view_outline_28"
         tools:srcCompat="@drawable/ic_view_24" />
 
     <TextView

@@ -1,4 +1,4 @@
-package ru.netology.androidbasic_1_2_1
+package ru.netology.androidbasic_2_1_1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ru.netology.androidbasic_1_2_1", appContext.packageName)
+        assertEquals("ru.netology.androidbasic_2_1_1", appContext.packageName)
     }
 }
