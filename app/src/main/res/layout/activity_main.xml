@@ -94,7 +94,7 @@
         android:padding="@dimen/common_spacing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        tools:src="@drawable/ic_like_outline_24" />
+        app:srcCompat="@drawable/ic_like_outline_24" />
 
     <TextView
         android:id="@+id/textViewLikes"
@@ -115,7 +115,7 @@
         android:padding="@dimen/common_spacing"
         app:layout_constraintStart_toEndOf="@+id/textViewLikes"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        tools:srcCompat="@drawable/ic_share_external_24" />
+        app:srcCompat="@drawable/ic_share_external_24" />
 
     <TextView
         android:id="@+id/textViewShares"
@@ -135,7 +135,7 @@
         android:padding="@dimen/common_spacing"
         app:layout_constraintEnd_toStartOf="@+id/textViewViews"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        tools:srcCompat="@drawable/ic_view_24" />
+        app:srcCompat="@drawable/ic_view_24" />
 
     <TextView
         android:id="@+id/textViewViews"
