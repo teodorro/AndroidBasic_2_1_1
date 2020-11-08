@@ -2,6 +2,8 @@ package ru.netology.androidbasic_2_1_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.observe
 import ru.netology.androidbasic_2_1_1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,54 +12,22 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(binding.root)
 
-        val post = Post(
-            id = 1,
-            author = "Нетология. Университет интернет профессий",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растем сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остается с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен -> http://netolo.gy/fyb",
-            published = "21 мая в 18:36",
-            likedByMe = false,
-            likes = 5,
-            shares = 999,
-            views = 1500000
-        )
-
-        with(binding){
-            initPost(post)
-            setListeners(post)
-        }
-
-    }
-
-    private fun ActivityMainBinding.setListeners(post: Post) {
-        imageButtonLikes?.setOnClickListener {
-            post.likedByMe = !post.likedByMe
-            if (post.likedByMe) {
-                imageButtonLikes.setImageResource(R.drawable.ic_liked_24)
-                post.likes++
+        val viewModel: PostViewModel by viewModels()
+        viewModel.data.observe(this) { post ->
+            with(binding) {
+                textViewAuthor.text = post.author
+                textViewMessage.text = post.content
+                textViewPublished.text = post.published
+                textViewLikes.text = convertIntToStr(post.likes)
+                textViewShares.text = convertIntToStr(post.shares)
+                textViewViews.text = convertIntToStr(post.views)
+                imageButtonLikes.setImageResource(
+                    if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_outline_24
+                )
             }
-            else{
-                imageButtonLikes.setImageResource(R.drawable.ic_like_outline_24)
-                post.likes--
-            }
-            textViewLikes.text = convertIntToStr(post.likes)
         }
-
-        imageButtonShares?.setOnClickListener{
-            post.shares++
-            textViewShares.text = convertIntToStr(post.shares)
-        }
-    }
-
-    private fun ActivityMainBinding.initPost(post: Post) {
-        this.textViewAuthor.text = post.author
-        textViewMessage.text = post.content
-        textViewPublished.text = post.published
-        if (post.likedByMe) {
-            imageButtonLikes?.setImageResource(R.drawable.ic_liked_24)
-        }
-        textViewLikes.text = convertIntToStr(post.likes)
-        textViewShares.text = convertIntToStr(post.shares)
-        textViewViews.text = convertIntToStr(post.views)
+        binding.imageButtonLikes.setOnClickListener { viewModel.like() }
+        binding.imageButtonShares.setOnClickListener { viewModel.share() }
     }
 
     private fun convertIntToStr(value: Int): String{
